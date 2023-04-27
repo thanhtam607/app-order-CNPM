@@ -11,7 +11,7 @@ import com.example.orderfood.Model.Food;
 import com.example.orderfood.R;
 
 import java.util.List;
-
+//create by thanh tam
 public class FoodAdapter extends BaseAdapter {
     Activity activity;
     List<Food> list;
