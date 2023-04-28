@@ -3,14 +3,17 @@ package com.example.orderfood.Model;
 public class Food {
     int id;
     String name;
-    double price;
-    String description;
+    float price;
+    String image;
 
-    public Food(int id, String name, double price,  String description){
+    public Food(int id, String name, float price,  String image){
         this.id = id;
         this.name = name;
         this.price = price;
-        this.description = description;
+        this.image = image;
+    }
+    public Food(){
+
     }
 
     public void setId(int id) {
@@ -21,12 +24,12 @@ public class Food {
         this.name = name;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public int getId() {
@@ -35,10 +38,10 @@ public class Food {
     public String getName() {
         return name;
     }
-    public double getPrice() {
+    public float getPrice() {
         return price;
     }
-    public String getDescription() {
-        return description;
+    public String getImage() {
+        return image;
     }
 }

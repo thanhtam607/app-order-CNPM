@@ -1,5 +1,6 @@
 package com.example.orderfood.Adapter;
 import android.app.Activity;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,7 @@ public class FoodAdapter extends BaseAdapter {
         TextView price= view.findViewById(R.id.food_price);
 
         Food food = list.get(position);
-        img.setImageResource(food.getId());
+        img.setImageURI(Uri.parse(food.getImage()));
         name.setText(food.getName());
        price.setText(food.getPrice()+" VND");
         return view;
