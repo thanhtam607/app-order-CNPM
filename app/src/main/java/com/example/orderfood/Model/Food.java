@@ -3,10 +3,10 @@ package com.example.orderfood.Model;
 public class Food {
     int id;
     String name;
-    float price;
+    int price;
     String image;
 
-    public Food(int id, String name, float price,  String image){
+    public Food(int id, String name, int price,  String image){
         this.id = id;
         this.name = name;
         this.price = price;
@@ -24,7 +24,7 @@ public class Food {
         this.name = name;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -38,7 +38,7 @@ public class Food {
     public String getName() {
         return name;
     }
-    public float getPrice() {
+    public int getPrice() {
         return price;
     }
     public String getImage() {

@@ -1,42 +1,51 @@
 package com.example.orderfood.entity;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
 
 import com.example.orderfood.Db.dbHelper;
 import com.example.orderfood.Model.Food;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FoodModify {
-    public static final String QUERY_CREATE_TABLE= "CREATE TABLE food(id INTEGER primary key AUTOINCREMENT," +
-            " name varchar(50), image text, price float);";
-    static SQLiteDatabase sqLiteDatabase = dbHelper.getInstance(null).getReadableDatabase();
+    private static SQLiteDatabase database = null;
+    public FoodModify(Context context){
+        dbHelper  dbHelper = new dbHelper(context);
+        database = dbHelper.open();
+    }
     //create by Thanh Tam
 //    Lấy lên danh sách món ăn
+    @SuppressLint("Recycle")
     public static List<Food> getData(){
         List<Food> res = new ArrayList<>();
-        String sql= "select * from food";
-        Cursor cursor = sqLiteDatabase.rawQuery(sql,null);
+        String sql= "SELECT * FROM MONAN";
+        Cursor cursor =database.rawQuery(sql,null);
         cursor.moveToFirst();
-        while(!cursor.moveToLast()){
-            res.add(new Food(cursor.getInt(0), cursor.getString(1),
-                    cursor.getFloat(3), cursor.getString(2)));
-        }
+        while(!cursor.isAfterLast()){
+            Food food = new Food(cursor.getInt(0), cursor.getString(1), cursor.getInt(2), cursor.getString(3));
+            res.add(food);
+            cursor.moveToNext();
+            }
+        res.add(new Food(3, "Cha ca", 30000, "123"));
         return res;
     }
     //create by Thanh Tam
 //    bước 7 trong mô tả use case Thêm món
     public static boolean addNewFood(Food food){
         ContentValues contentValues = new ContentValues();
-        contentValues.put("name",food.getName());
-        contentValues.put("price", food.getPrice());
-        contentValues.put("image", food.getImage());
+        contentValues.put("TENMON",food.getName());
+        contentValues.put("GIATIEN", food.getPrice());
+        contentValues.put("HINHANH", food.getImage());
 
-        long kiemtra = sqLiteDatabase.insert("food",null,contentValues);
-        return kiemtra != 0;
+        long kiemtra = database.insert("MONAN",null,contentValues);
+        return kiemtra!=0;
     }
 }

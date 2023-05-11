@@ -18,16 +18,19 @@ import com.google.android.material.textfield.TextInputEditText;
 public class AddFoodActivity extends AppCompatActivity implements View.OnClickListener {
     private Button selectImg;
     private ImageView image;
-    private String imgUrl;
+    private String imgUri;
     private TextInputEditText name, price;
+    FoodModify foodModify;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         setContentView(R.layout.activity_add_food);
         name = findViewById(R.id.name);
         price = findViewById(R.id.price);
         image = findViewById(R.id.imageView);
+        foodModify= new FoodModify(this);
 
         image.setOnClickListener(this);
     }
@@ -45,20 +48,22 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.add_food_btn:
                 String foodName = name.getText().toString();
-                float foodprice = 0;
+
+                int foodprice = 0;
 //                    bước 5 trong mô tả use case
                 if (foodName != null && price.getText().toString()!= null && !foodName.equals("") && !price.getText().toString().equals(" ")){
                     Food food = null;
                     if (!isExist(foodName))// bước 6
                     {
                         food = new Food();//bước 7
-                        foodprice=Float.parseFloat(price.getText().toString());
+                        foodprice=Integer.parseInt(price.getText().toString());
                         food.setName(foodName);
                         food.setPrice(foodprice);
+                        food.setImage(imgUri);
                     }
                    
 
-                    boolean check = FoodModify.addNewFood(food);//bước 8
+                    boolean check = foodModify.addNewFood(food);//bước 8
                     if (check )
                         //bước 9
                         Toast.makeText(this, getResources().getString(R.string.themthanhcong), Toast.LENGTH_SHORT).show();
@@ -69,15 +74,21 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
                     Toast.makeText(this, getResources().getString(R.string.themthatbai), Toast.LENGTH_SHORT).show();
 
                 break;
+            case R.id.exit:
+                finish();
+                break;
+
+
         }
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
             if (resultCode == Activity.RESULT_OK && data != null){
-               imgUrl = data.getData().toString();
-               name.setText(imgUrl);
+               imgUri = data.getData().toString();
                image.setImageURI(data.getData());
+               name.setText(FoodModify.getData().size()+"");
             }
     }
 
