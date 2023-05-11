@@ -1,5 +1,6 @@
 package com.example.orderfood.Adapter;
 import android.app.Activity;
+import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +15,10 @@ import com.example.orderfood.R;
 import java.util.List;
 //create by thanh tam
 public class FoodAdapter extends BaseAdapter {
-    Activity activity;
+    private final Context context;
     List<Food> list;
-    public FoodAdapter(Activity activity, List<Food> list){
-        this.activity = activity;
+    public FoodAdapter(Context context, List<Food> list){
+        this.context =context;
         this.list=list;
     }
     @Override
@@ -36,15 +37,24 @@ public class FoodAdapter extends BaseAdapter {
     }
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        LayoutInflater inflater = activity.getLayoutInflater();
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.item_food, null);
 
         ImageView img = view.findViewById(R.id.ifo_img);
         TextView name = view.findViewById(R.id.food_name);
         TextView price= view.findViewById(R.id.food_price);
 
+
         Food food = list.get(position);
-        img.setImageURI(Uri.parse(food.getImage()));
+        String s = 123+"";
+        if(food.getImage().equals(s)){
+            img.setImageResource(R.drawable.f001);
+        }else{
+            img.setImageURI(null);
+
+            img.setImageURI(Uri.parse(food.getImage()));
+        }
+
         name.setText(food.getName());
        price.setText(food.getPrice()+" VND");
         return view;
