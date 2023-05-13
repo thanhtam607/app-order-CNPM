@@ -1,5 +1,5 @@
 package com.example.orderfood.Adapter;
-import android.app.Activity;
+
 import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -16,7 +16,7 @@ import java.util.List;
 //create by thanh tam
 public class FoodAdapter extends BaseAdapter {
     private final Context context;
-    List<Food> list;
+    private final  List<Food> list;
     public FoodAdapter(Context context, List<Food> list){
         this.context =context;
         this.list=list;
@@ -33,7 +33,7 @@ public class FoodAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return list.get(position).getId();
     }
     @Override
     public View getView(int position, View view, ViewGroup parent) {
@@ -47,16 +47,16 @@ public class FoodAdapter extends BaseAdapter {
 
         Food food = list.get(position);
         String s = 123+"";
+
         if(food.getImage().equals(s)){
             img.setImageResource(R.drawable.f001);
-        }else{
-            img.setImageURI(null);
-
-            img.setImageURI(Uri.parse(food.getImage()));
         }
-
+        else{
+            Uri uri = Uri.parse(food.getImage());
+            img.setImageURI(uri);
+        }
         name.setText(food.getName());
-       price.setText(food.getPrice()+" VND");
+        price.setText(food.getPrice()+" VND");
         return view;
     }
 }

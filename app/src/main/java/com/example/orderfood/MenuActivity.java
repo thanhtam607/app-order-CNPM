@@ -13,11 +13,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.example.orderfood.Db.dbHelper;
 import com.example.orderfood.fragment.ListFoodFragment;
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity {
     private FragmentManager fragmentManager;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -27,10 +26,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_menu);
         drawerLayout= findViewById(R.id.drawerLayout);
-        dbHelper dbHelper= new dbHelper(this);
-        dbHelper.open();
+
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction trans = fragmentManager.beginTransaction();
         ListFoodFragment listFood =  new ListFoodFragment();
