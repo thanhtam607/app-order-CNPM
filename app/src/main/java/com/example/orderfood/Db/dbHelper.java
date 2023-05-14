@@ -3,11 +3,6 @@ package com.example.orderfood.Db;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.net.Uri;
-
-import com.example.orderfood.entity.FoodModify;
-
-import java.io.File;
 
 public class dbHelper extends SQLiteOpenHelper {
     private static final int DB_VERSION = 1;
