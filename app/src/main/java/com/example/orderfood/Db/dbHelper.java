@@ -30,6 +30,7 @@ public class dbHelper extends SQLiteOpenHelper {
 
         String insert1 = "INSERT INTO MONAN VALUES(1, 'Vịt quay Nha Trang', 250000, 123 )";
         String insert = "INSERT INTO MONAN VALUES(15, 'Vịt quay', 50000, 123)";
+        String insert2 = "INSERT INTO NHANVIEN VALUES(1, 'admin', '1234','Nữ', '12/1/2002', 1)";
        db.execSQL(tb_NhanVien);
         db.execSQL(tb_BanAn);
         db.execSQL(tb_MonAn);

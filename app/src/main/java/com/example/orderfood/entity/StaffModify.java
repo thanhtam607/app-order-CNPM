@@ -23,7 +23,7 @@ public class StaffModify {
 
     @SuppressLint({"Recycle", "Range"})
     public int login(String name, String pass){
-        String sql = "SELECT * FROM NHANVIEN WHERE TEDN = '" + name
+        String sql = "SELECT * FROM NHANVIEN WHERE TENDN = '" + name
                 + "' AND MATKHAU = '" + pass + "'";
 
         int idStaff = 0;

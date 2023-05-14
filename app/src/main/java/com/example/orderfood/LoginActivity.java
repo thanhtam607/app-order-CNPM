@@ -68,7 +68,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         }
     }
-
     private void btLogin(){
         String user = edUsername.getText().toString();
         String pass = edPass.getText().toString();
@@ -76,19 +75,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         int maquyen = staffModify.getRole(check);
 
         if (check == 0){
-//            SharedPreferences sharedPreferences = getSharedPreferences("luuquyen", Context.MODE_PRIVATE); // chỉ có ứng dụng này đc dùng
-//            SharedPreferences.Editor editor = sharedPreferences.edit();
-//            editor.putInt("maquyen", maquyen);
-//            editor.apply();
+//
             dbHelper dbHelper= new dbHelper(this);
             dbHelper.open();
             Intent iHome = new Intent(LoginActivity.this, MenuActivity.class);
-//            iHome.putExtra("tendn", edUsername.getText().toString());
-//            iHome.putExtra("manhanvien", check);
+            iHome.putExtra("tendn", edUsername.getText().toString());
+            iHome.putExtra("manhanvien", check);
             startActivity(iHome);
 
             finish();
-
 
         } else Toast.makeText(LoginActivity.this, "Đăng nhập thất bại!!", Toast.LENGTH_SHORT).show();
     }
