@@ -19,17 +19,20 @@
         android:theme="@style/Theme.OrderFood"
         tools:targetApi="31">
         <activity
-            android:name=".Model.CartFoodActivity"
+            android:name=".CartFoodActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MenuActivity"
             android:exported="false" />
         <activity
             android:name=".AddFoodActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
+            android:label="ORDER FOOD"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

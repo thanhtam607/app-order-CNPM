@@ -31,18 +31,17 @@ public class FoodModify {
             res.add(food);
             cursor.moveToNext();
             }
-        res.add(new Food(3, "Cha ca", 30000, "123"));
         return res;
     }
     //create by Thanh Tam
 //    bước 7 trong mô tả use case Thêm món
-    public static boolean addNewFood(Food food){
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("TENMON",food.getName());
-        contentValues.put("GIATIEN", food.getPrice());
-        contentValues.put("HINHANH", food.getImage());
+    public void addNewFood(Food food) {
+        ContentValues values = new ContentValues();
+        values.put("TENMON", food.getName());
+        values.put("GIATIEN", food.getPrice());
+        values.put("HINHANH", food.getImage());
 
-        long kiemtra = database.insert("MONAN",null,contentValues);
-        return kiemtra!=0;
+        database.insert("MONAN", null, values);
+//        database.close();
     }
 }
