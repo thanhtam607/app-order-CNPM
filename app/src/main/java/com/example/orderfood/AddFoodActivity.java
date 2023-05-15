@@ -3,7 +3,6 @@ package com.example.orderfood;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +15,7 @@ import com.example.orderfood.entity.FoodModify;
 import com.google.android.material.textfield.TextInputEditText;
 // create bt Thanh Tam
 public class AddFoodActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button selectImg;
+    private Button addFood, exit;
     private ImageView image;
     private String imgUri;
     private TextInputEditText name, price;
@@ -30,11 +29,17 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
         name = findViewById(R.id.name);
         price = findViewById(R.id.price);
         image = findViewById(R.id.imageView);
+        exit = findViewById(R.id.exit);
+        addFood = findViewById(R.id.add_food_btn);
+
         foodModify= new FoodModify(this);
 
         image.setOnClickListener(this);
+        addFood.setOnClickListener(this);
+        exit.setOnClickListener(this);
     }
     //        Bước 3 trong mô tả use case Thêm món
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
         int id = v.getId();
@@ -44,11 +49,10 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_PICK);
-                startActivityForResult(Intent.createChooser(intent,"Chọn hình thực đơn"),0);
+                startActivityForResult(Intent.createChooser(intent,"Chọn hình món ăn"), 1);
                 break;
             case R.id.add_food_btn:
                 String foodName = name.getText().toString();
-
                 int foodprice = 0;
 //                    bước 5 trong mô tả use case
                 if (foodName != null && price.getText().toString()!= null && !foodName.equals("") && !price.getText().toString().equals(" ")){
@@ -61,41 +65,31 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
                         food.setPrice(foodprice);
                         food.setImage(imgUri);
                     }
-                   
+                    foodModify.addNewFood(food);//bước 8
 
-                    boolean check = foodModify.addNewFood(food);//bước 8
-                    if (check )
-                        //bước 9
-                        Toast.makeText(this, getResources().getString(R.string.themthanhcong), Toast.LENGTH_SHORT).show();
-                    else
-                        Toast.makeText(this, getResources().getString(R.string.themthatbai), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Thêm món ăn thành công", Toast.LENGTH_SHORT).show();
                 }else
                     // bước 7.1
                     Toast.makeText(this, getResources().getString(R.string.themthatbai), Toast.LENGTH_SHORT).show();
-
                 break;
             case R.id.exit:
+                Intent intent1 = new Intent(this, MenuActivity.class);
+                startActivity(intent1);
                 finish();
                 break;
-
 
         }
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-            if (resultCode == Activity.RESULT_OK && data != null){
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null){
                imgUri = data.getData().toString();
                image.setImageURI(data.getData());
-               name.setText(FoodModify.getData().size()+"");
             }
     }
 
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-        super.onPointerCaptureChanged(hasCapture);
-    }
+
     public boolean isExist(String name){
         for(Food f: FoodModify.getData()){
             if(f.getName().equals(name)){

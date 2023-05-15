@@ -1,4 +1,4 @@
-package com.example.orderfood.Model;
+package com.example.orderfood;
 
 import androidx.appcompat.app.AppCompatActivity;
 

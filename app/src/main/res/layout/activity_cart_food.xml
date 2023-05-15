@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Model.CartFoodActivity">
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/txtgiohang"
-    app:layout_constraintBottom_toTopOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    android:textStyle="bold"
-    android:visibility="gone"
-    android:text="Gio hang Trống"
-    android:gravity="center"
-    android:textSize="18sp"
-    
-    />
+    tools:context=".CartFoodActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtgiohang"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:text="Gio hang Trống"
+        android:gravity="center"
+        android:textSize="18sp"
+
+        />
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toobar"
         app:layout_constraintTop_toTopOf="parent"
@@ -31,7 +31,7 @@
         android:id="@+id/reygiohang"
         app:layout_constraintTop_toBottomOf="@+id/toobar"
         app:layout_constraintBottom_toTopOf="@+id/layout1"
-       />
+        />
     <LinearLayout
         android:id="@+id/layout1"
         app:layout_constraintBottom_toTopOf="@+id/bottonxanhan"
