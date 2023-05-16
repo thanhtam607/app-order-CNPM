@@ -1,5 +1,6 @@
 package com.example.orderfood;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -14,21 +15,27 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.Toast;
 
+import com.example.orderfood.Db.dbHelper;
 import com.example.orderfood.fragment.ListFoodFragment;
 import com.google.android.material.navigation.NavigationView;
 
 public class MenuActivity extends AppCompatActivity {
+    private Button nutgiohang;
     private FragmentManager fragmentManager;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private Toolbar toolbar;
     private final int STORAGE_PERMISSION_CODE = 1;
-    @SuppressLint("WrongViewCast")
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+//
         drawerLayout= findViewById(R.id.drawerLayout);
 
         fragmentManager = getSupportFragmentManager();
@@ -60,16 +67,28 @@ public class MenuActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-    private  void initView(){
-        Button nutgiohang =findViewById(R.id.nutgiohang);
-        nutgiohang.setOnClickListener(new  View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent giohang= new Intent(getApplicationContext(),CartFoodActivity.class);
-                startActivity(giohang);
 
-            }
-        });
+    private void init(){
+            Intent iHome = new Intent(MenuActivity.this, CartFoodActivity.class);
+            startActivity(iHome);
+            finish();
     }
 
+    @SuppressLint("NonConstantResourceId")
+        public void onClick(@NonNull View view) {
+            int id = view.getId();
+            if (id == R.id.nutgiohang) init();
+    }
+
+
+//        Button nutgiohang =findViewById(R.id.nutgiohang);
+//        nutgiohang.setOnClickListener(new  View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent giohang= new Intent(MenuActivity.this,CartFoodActivity.class);
+//                startActivity(giohang);
+//
+//            }
+//        });
+//    }
 }
