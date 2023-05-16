@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.orderfood.fragment.ListFoodFragment;
 import com.google.android.material.navigation.NavigationView;
@@ -57,6 +59,17 @@ public class MenuActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+    private  void initView(){
+        Button nutgiohang =findViewById(R.id.nutgiohang);
+        nutgiohang.setOnClickListener(new  View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent giohang= new Intent(getApplicationContext(),CartFoodActivity.class);
+                startActivity(giohang);
+
+            }
+        });
     }
 
 }
