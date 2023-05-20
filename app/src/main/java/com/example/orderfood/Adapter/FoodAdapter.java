@@ -58,4 +58,8 @@ public class FoodAdapter extends BaseAdapter {
 
         return view;
     }
+    public boolean remove(Food food){
+        list.remove(food);
+        return true;
+    }
 }
