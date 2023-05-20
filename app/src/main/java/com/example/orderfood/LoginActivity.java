@@ -60,12 +60,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == STORAGE_PERMISSION_CODE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, "Đã được cấp quyền!", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Ứng dụng bị từ chối cấp quyền!", Toast.LENGTH_SHORT).show();
-                requestStoragePermission();
-            }
+//            } else {
+//                Toast.makeText(this, "Ứng dụng bị từ chối cấp quyền!", Toast.LENGTH_SHORT).show();
+//                requestStoragePermission();
+//            }
         }
     }
     private void btLogin(){
@@ -82,7 +82,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             iHome.putExtra("tendn", edUsername.getText().toString());
             iHome.putExtra("manhanvien", check);
             startActivity(iHome);
-
             finish();
 
         } else Toast.makeText(LoginActivity.this, "Đăng nhập thất bại!!", Toast.LENGTH_SHORT).show();

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/f002"
+        android:layout_marginBottom="30dp"/>
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="40dp"
+        android:textColor="#000000"
+        android:textAlignment="center"
+        android:layout_marginBottom="30dp"/>
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="40dp"
+        android:textColor="#000000"
+        android:textAlignment="center"
+        android:layout_marginBottom="20dp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Số lượng: "
+            android:textAlignment="textEnd"
+            android:textSize="30dp"
+            android:textColor="#000000"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/quantity"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="#ffffff"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            android:textAlignment="textStart"
+            android:textColor="#000000"
+            android:textColorHint="#f0f0f0f0"
+            android:textSize="30dp"
+            android:inputType="number"
+            tools:ignore="Autofill,LabelFor,TextFields,SpeakableTextPresentCheck" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/add_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Xác nhận"
+        android:layout_gravity="center"/>
+
+
+
+
+</LinearLayout>

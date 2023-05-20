@@ -6,31 +6,22 @@
     android:background="#FFFFFF"
     tools:context=".fragment.ListFoodFragment">
 
-    <ListView
-        android:id="@+id/list"
-        android:layout_width="wrap_content"
-        android:layout_height="653dp"
-        android:layout_below="@+id/spinnerLocation"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_weight="7.17"
-        android:background="#FFFFFF" />
+
     <LinearLayout
-        android:orientation="horizontal"
-        android:gravity="center"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
-        <Button
-            android:id="@+id/nutgiohang"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="wrap_content"
+            android:layout_height="653dp"
+            android:layout_below="@+id/spinnerLocation"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="4dp"
-            android:text="Giỏ Hàng"
-            android:onClick="onClick"
-            />
+            android:layout_centerHorizontal="true"
+            android:layout_weight="7.17"
+            android:background="#FFFFFF" />
+
+
 
 
     </LinearLayout>

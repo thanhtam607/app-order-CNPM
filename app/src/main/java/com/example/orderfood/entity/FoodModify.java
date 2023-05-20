@@ -42,6 +42,32 @@ public class FoodModify {
         values.put("HINHANH", food.getImage());
 
         database.insert("MONAN", null, values);
-//        database.close();
+        database.close();
     }
+
+
+    public static Food findFoodById(int id) {
+        Food food = new Food();
+        String sql = "SELECT * FROM MONAN WHERE MAMON = '"+ id+ "'";
+        Cursor cursor = database.rawQuery(sql, null);
+
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            food.setId(cursor.getInt(0));
+            food.setName(cursor.getString(1));
+            food.setPrice(cursor.getInt(2));
+            food.setImage(cursor.getString(3));
+            cursor.moveToNext();
+        }
+
+        return food;
+
+    }
+
+
+
+
+
+
+
 }

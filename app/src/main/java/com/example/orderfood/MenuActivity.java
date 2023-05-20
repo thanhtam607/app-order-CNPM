@@ -1,6 +1,5 @@
 package com.example.orderfood;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -13,20 +12,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.Toast;
 
-import com.example.orderfood.Db.dbHelper;
 import com.example.orderfood.fragment.ListFoodFragment;
-import com.google.android.material.navigation.NavigationView;
+import com.example.orderfood.fragment.ListTableFragment;
+import com.example.orderfood.fragment.OrderFoodFragment;
+
 
 public class MenuActivity extends AppCompatActivity {
     private Button nutgiohang;
     private FragmentManager fragmentManager;
     private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
+
     private Toolbar toolbar;
     private final int STORAGE_PERMISSION_CODE = 1;
 
@@ -40,8 +37,8 @@ public class MenuActivity extends AppCompatActivity {
 
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction trans = fragmentManager.beginTransaction();
-        ListFoodFragment listFood =  new ListFoodFragment();
-        trans.replace(R.id.content, listFood);
+        ListTableFragment listTable =  new ListTableFragment();
+        trans.replace(R.id.content, listTable);
         trans.commit();
         drawerLayout.closeDrawers();
     }
@@ -59,26 +56,34 @@ public class MenuActivity extends AppCompatActivity {
 //           create by Thanh Tam
 //    bước 2 trong mô tả use case Thêm món
             case R.id.create_new_food:
+                item.setChecked(true);
                 Intent intent = new Intent(this, AddFoodActivity.class);
                 startActivity(intent);
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+                break;
+            case R.id.list_Food:
+                FragmentTransaction tranHienThiThucDon = fragmentManager.beginTransaction();
+                ListFoodFragment listFoodFragment = new ListFoodFragment();
+                tranHienThiThucDon.replace(R.id.content, listFoodFragment);
+                tranHienThiThucDon.commit();
+                item.setChecked(true);
+                drawerLayout.closeDrawers();
+                break;
         }
+        return false;
+
     }
 
     private void init(){
-            Intent iHome = new Intent(MenuActivity.this, CartFoodActivity.class);
+            Intent iHome = new Intent(MenuActivity.this, OrderFoodFragment.class);
             startActivity(iHome);
             finish();
     }
 
-    @SuppressLint("NonConstantResourceId")
-        public void onClick(@NonNull View view) {
-            int id = view.getId();
-            if (id == R.id.nutgiohang) init();
-    }
+//    @SuppressLint("NonConstantResourceId")
+//        public void onClick(@NonNull View view) {
+//            int id = view.getId();
+//            if (id == R.id.nutgiohang) init();
+//    }
 
 
 //        Button nutgiohang =findViewById(R.id.nutgiohang);
