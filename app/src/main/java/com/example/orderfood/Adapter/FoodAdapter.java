@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,12 +26,10 @@ public class FoodAdapter extends BaseAdapter {
     public int getCount() {
         return list.size();
     }
-
     @Override
     public Object getItem(int position) {
         return list.get(position);
     }
-
     @Override
     public long getItemId(int position) {
         return list.get(position).getId();
@@ -44,7 +43,6 @@ public class FoodAdapter extends BaseAdapter {
         TextView name = view.findViewById(R.id.food_name);
         TextView price= view.findViewById(R.id.food_price);
 
-
         Food food = list.get(position);
         String s = 123+"";
 
@@ -57,6 +55,7 @@ public class FoodAdapter extends BaseAdapter {
         }
         name.setText(food.getName());
         price.setText(food.getPrice()+" VND");
+
         return view;
     }
 }

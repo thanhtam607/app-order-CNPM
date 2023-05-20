@@ -7,18 +7,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.orderfood.Model.Food;
 import com.example.orderfood.entity.FoodModify;
-import com.google.android.material.textfield.TextInputEditText;
+
 // create bt Thanh Tam
 public class AddFoodActivity extends AppCompatActivity implements View.OnClickListener {
     private Button addFood, exit;
     private ImageView image;
     private String imgUri;
-    private TextInputEditText name, price;
+    private EditText name, price;
     FoodModify foodModify;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
