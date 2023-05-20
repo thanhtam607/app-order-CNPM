@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -18,9 +19,11 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.orderfood.Adapter.OrderDetailAdapter;
 import com.example.orderfood.AddFoodfForOrderActivity;
 import com.example.orderfood.MenuActivity;
+import com.example.orderfood.Model.Food;
 import com.example.orderfood.Model.Order;
 import com.example.orderfood.Model.OrderDetail;
 import com.example.orderfood.R;
+import com.example.orderfood.entity.FoodModify;
 import com.example.orderfood.entity.OrderModify;
 import com.example.orderfood.entity.TableModify;
 
@@ -35,6 +38,8 @@ public class OrderFoodFragment extends Fragment implements View.OnClickListener 
     OrderDetailAdapter adapter;
     FragmentManager fragmentManager;
     int tableId;
+    TextView total;
+    int totalO = 0;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,6 +48,7 @@ public class OrderFoodFragment extends Fragment implements View.OnClickListener 
 
        button = view.findViewById(R.id.submit);
        listView= view.findViewById(R.id.listOrder);
+       total = view.findViewById(R.id.total);
 
         Bundle bundle = getArguments();
         if(bundle != null) {
@@ -53,7 +59,12 @@ public class OrderFoodFragment extends Fragment implements View.OnClickListener 
 
 
             listdata = orderModify.getListOrderDetailById(orderId);
-
+            FoodModify foodModify = new FoodModify(getActivity());
+            for(OrderDetail detail : listdata){
+                Food food = foodModify.findFoodById(detail.getFoodId());
+                totalO += food.getPrice()* detail.getQuantity();
+            }
+            total.setText(totalO+" VND");
             adapter = new OrderDetailAdapter(getActivity(), listdata);
             listView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
