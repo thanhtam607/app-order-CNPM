@@ -72,16 +72,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String user = edUsername.getText().toString();
         String pass = edPass.getText().toString();
         int check = staffModify.login(user, pass);
-        int maquyen = staffModify.getRole(check);
+        int role = staffModify.getRole(check);
 
-        if (check == 0){
+        if (check != 0){
 //
             dbHelper dbHelper= new dbHelper(this);
             dbHelper.open();
-            Intent iHome = new Intent(LoginActivity.this, MenuActivity.class);
-            iHome.putExtra("tendn", edUsername.getText().toString());
-            iHome.putExtra("manhanvien", check);
-            startActivity(iHome);
+            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+            intent.putExtra("role", role);
+            startActivity(intent);
             finish();
 
         } else Toast.makeText(LoginActivity.this, "Đăng nhập thất bại!!", Toast.LENGTH_SHORT).show();

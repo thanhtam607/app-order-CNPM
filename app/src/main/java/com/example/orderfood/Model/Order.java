@@ -7,10 +7,10 @@ public class Order {
     int id;
     int table;
    List<OrderDetail> itemOrder;
-    float price;
+    int price;
 
 
-    public Order(int id, int table, List<OrderDetail> itemOrder, float price) {
+    public Order(int id, int table, List<OrderDetail> itemOrder, int price) {
         this.id = id;
         this.table = table;
         this.itemOrder = itemOrder;
@@ -43,11 +43,12 @@ public class Order {
         this.itemOrder = itemOrder;
     }
 
-    public float getPrice() {
+    public int getPrice() {
+
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
