@@ -63,7 +63,9 @@ public class FoodModify {
         return food;
 
     }
-
+    public static void remove_food(int id) {
+        database.delete("MONAN", "MAMON = "+ id, null);
+    }
 
 
 
