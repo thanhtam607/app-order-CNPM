@@ -2,7 +2,6 @@ package com.example.orderfood.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +9,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.orderfood.MenuActivity;
+import com.example.orderfood.MainActivity;
 import com.example.orderfood.Model.Order;
 import com.example.orderfood.Model.OrderDetail;
 import com.example.orderfood.Model.Table;
@@ -41,7 +39,7 @@ public class TableAdapter extends BaseAdapter implements View.OnClickListener, V
         this.list = tableList;
         this.orderModify = new OrderModify(context);
         this.tableModify = new TableModify(context);
-        fragmentManager = ((MenuActivity)context).getSupportFragmentManager();
+        fragmentManager = ((MainActivity)context).getSupportFragmentManager();
     }
 
     @Override

@@ -52,29 +52,29 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
                 intent.setAction(Intent.ACTION_PICK);
                 startActivityForResult(Intent.createChooser(intent,"Chọn hình món ăn"), 1);
                 break;
-            case R.id.add_food_btn:
+            case R.id.add_food_btn://bước 3
                 String foodName = name.getText().toString();
                 int foodprice = 0;
-//                    bước 5 trong mô tả use case
+
                 if (foodName != null && price.getText().toString()!= null && !foodName.equals("") && !price.getText().toString().equals(" ")){
                     Food food = null;
-                    if (!isExist(foodName))// bước 6
+                    if (!isExist(foodName))// bước 4: kiểm tra món ăn đã tồn tại trong hệ thống chưa
                     {
-                        food = new Food();//bước 7
+                        food = new Food();//bước 5 thêm món ăn mới
                         foodprice=Integer.parseInt(price.getText().toString());
                         food.setName(foodName);
                         food.setPrice(foodprice);
                         food.setImage(imgUri);
                     }
-                    foodModify.addNewFood(food);//bước 8
-
+                    foodModify.addNewFood(food);//bước 6: lưu món ăn vào csdl
+                    //bước 7 thông báo thêm món ăn thành công
                     Toast.makeText(this, "Thêm món ăn thành công", Toast.LENGTH_SHORT).show();
                 }else
-                    // bước 7.1
+                    // bước 4.1
                     Toast.makeText(this,"Món ăn đã tồn tại", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.exit:
-                Intent intent1 = new Intent(this, MenuActivity.class);
+                Intent intent1 = new Intent(this, MainActivity.class);
                 startActivity(intent1);
                 finish();
                 break;

@@ -19,7 +19,7 @@ import com.example.orderfood.fragment.ListTableFragment;
 import com.example.orderfood.fragment.OrderFoodFragment;
 
 
-public class MenuActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     private Button nutgiohang;
     private FragmentManager fragmentManager;
     private DrawerLayout drawerLayout;
@@ -54,9 +54,10 @@ public class MenuActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
 //           create by Thanh Tam
-//    bước 2 trong mô tả use case Thêm món
+//            bước 1: nhấn chọn nút thêm món
             case R.id.create_new_food:
                 item.setChecked(true);
+                //    bước 2 Hiển thị màn hình thêm món ăn
                 Intent intent = new Intent(this, AddFoodActivity.class);
                 startActivity(intent);
                 break;
@@ -74,7 +75,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void init(){
-            Intent iHome = new Intent(MenuActivity.this, OrderFoodFragment.class);
+            Intent iHome = new Intent(MainActivity.this, OrderFoodFragment.class);
             startActivity(iHome);
             finish();
     }

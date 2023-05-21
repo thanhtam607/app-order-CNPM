@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuInflater;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.ContextMenu;
@@ -21,7 +19,7 @@ import android.widget.ListView;
 
 import com.example.orderfood.Adapter.FoodAdapter;
 import com.example.orderfood.AddFoodfForOrderActivity;
-import com.example.orderfood.MenuActivity;
+import com.example.orderfood.MainActivity;
 import com.example.orderfood.Model.Food;
 import com.example.orderfood.R;
 import com.example.orderfood.entity.FoodModify;
@@ -81,7 +79,7 @@ public class ListFoodFragment extends Fragment {
                              Bundle savedInstanceState) {
        View view  = inflater.inflate(R.layout.fragment_list_food, container,false);
 //        View view2  = inflater.inflate(R.layout.fragment_delete_food, container,false);
-        ((MenuActivity) getActivity()).getSupportActionBar().setTitle("Thực đơn");
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Thực đơn");
         listView = view.findViewById(R.id.list);
 //        listView2 = view2.findViewById(R.id.listFoods);
     registerForContextMenu(listView);// 20130348
