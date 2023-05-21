@@ -7,6 +7,8 @@ import android.view.MenuInflater;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -37,25 +39,26 @@ public class ListFoodFragment extends Fragment {
     int tableId;
     int idRemove;
 
-    // 20130348
+    // 20130348 20130348 bước 2 và 2.1 Xóa món ăn
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater inflater = getActivity().getMenuInflater();
         inflater.inflate(R.menu.context_menu, menu);
     }
-//    20130348
-    @Override
+//    20130348 bước 3 và 3.1 Xóa món ăn
+//    @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         switch (item.getItemId()) {
             case R.id.delete:
                 // Xóa món ăn được chọn
                 // Thêm code xử lý xóa món ăn ở đây
-                int id = dataList.get(info.position).getId();
-                foodAdapter.remove(FoodModify.findFoodById(id));
-                FoodModify.remove_food(id);
-                foodAdapter.notifyDataSetChanged();
+                int id = dataList.get(info.position).getId();    // Lấy ID của món ăn được chọn từ danh sách dataList bằng cách sử dụng vị trí của item được chọn trên AdapterView
+                foodAdapter.remove(FoodModify.findFoodById(id)); // Sử dụng ID của món ăn để tìm món ăn trong danh sách FoodModify và xóa món ăn khỏi danh sách  foodAdapter
+                FoodModify.remove_food(id);                     // Xóa món ăn khỏi danh sách FoodModify
+                foodAdapter.notifyDataSetChanged();// bước 5 Xóa món ăn(Cập nhật lại giao diện người dùng)
+                reloadFragment(); // Tải lại trang
                 return true;
             case R.id.details:
                 // Xem chi tiết món ăn được chọn
@@ -65,6 +68,12 @@ public class ListFoodFragment extends Fragment {
                 return super.onContextItemSelected(item);
         }
     }
+
+    private void reloadFragment() {
+        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+        ft.detach(this).attach(this).commit();
+    }
+
     @SuppressLint("MissingInflatedId")
     @Nullable
     @Override

@@ -58,6 +58,7 @@ public class FoodAdapter extends BaseAdapter {
 
         return view;
     }
+//    20130348 bước 4 Xóa món ăn
     public boolean remove(Food food){
         list.remove(food);
         return true;
