@@ -71,7 +71,7 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
                     Toast.makeText(this, "Thêm món ăn thành công", Toast.LENGTH_SHORT).show();
                 }else
                     // bước 7.1
-                    Toast.makeText(this, getResources().getString(R.string.themthatbai), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,"Món ăn đã tồn tại", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.exit:
                 Intent intent1 = new Intent(this, MenuActivity.class);
@@ -87,6 +87,7 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
         if (requestCode == 1 && resultCode == RESULT_OK && data != null){
                imgUri = data.getData().toString();
                image.setImageURI(data.getData());
+               name.setText(data.getData().toString());
             }
     }
 
