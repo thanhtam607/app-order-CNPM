@@ -29,6 +29,7 @@ public class TableModify {
             Table table = new Table();
             table.setId(cursor.getInt(0));
             table.setName(cursor.getString(1));
+            table.setStatus(cursor.getString(2));
             tableList.add(table);
             cursor.moveToNext();
         }
