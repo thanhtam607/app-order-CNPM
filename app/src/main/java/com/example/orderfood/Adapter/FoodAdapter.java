@@ -53,11 +53,13 @@ public class FoodAdapter extends BaseAdapter {
         else{
             Uri uri = Uri.parse(food.getImage());
             img.setImageURI(uri);
-//            price.setText(uri.toString());
+            price.setText(uri.toString());
         }
 
-
-
         return view;
+    }
+    public boolean remove(Food food){
+        list.remove(food);
+        return true;
     }
 }
