@@ -63,6 +63,7 @@ public class FoodModify {
         return food;
 
     }
+    // 20130348 bước 4.1 Xóa món ăn
     public static void remove_food(int id) {
         database.delete("MONAN", "MAMON = "+ id, null);
     }

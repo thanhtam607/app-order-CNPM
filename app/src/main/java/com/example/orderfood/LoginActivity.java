@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         int check = staffModify.login(user, pass);
         int maquyen = staffModify.getRole(check);
 
-        if (check == 0){
+        if (check != 0){
 //
             dbHelper dbHelper= new dbHelper(this);
             dbHelper.open();
