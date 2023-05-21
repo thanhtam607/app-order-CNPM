@@ -45,16 +45,16 @@ public class FoodAdapter extends BaseAdapter {
 
         Food food = list.get(position);
         String s = 123+"";
-
+        name.setText(food.getName());
+        price.setText(food.getPrice()+" VND");
         if(food.getImage().equals(s)){
             img.setImageResource(R.drawable.f001);
         }
         else{
             Uri uri = Uri.parse(food.getImage());
             img.setImageURI(uri);
+            price.setText(uri.toString());
         }
-        name.setText(food.getName());
-        price.setText(food.getPrice()+" VND");
 
         return view;
     }

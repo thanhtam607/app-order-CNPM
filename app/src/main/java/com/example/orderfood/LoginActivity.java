@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 //
             dbHelper dbHelper= new dbHelper(this);
             dbHelper.open();
-            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             intent.putExtra("role", role);
             startActivity(intent);
             finish();
